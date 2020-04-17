@@ -1,6 +1,7 @@
 #include <iostream>
 #include "KeyLogger.h"
 #include "FileLogger.h"
+#include "SocketLogger.h"
 
 using namespace std;
 

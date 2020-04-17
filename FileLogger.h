@@ -10,7 +10,7 @@ using namespace std;
 
 
 /*
-Log data to the given file path
+	Log data to the given file path
 */
 class FileLogger : public Logger
 {
@@ -20,6 +20,7 @@ private:
 public:
 	FileLogger(string filepath);
 	~FileLogger();
+
 	virtual void Write(string output);
 	virtual void Write(char output);
 };

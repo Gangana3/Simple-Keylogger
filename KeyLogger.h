@@ -7,6 +7,9 @@
 
 using namespace std;
 
+/*
+	Responsible for logging all the user keyboard presses
+*/
 class KeyLogger
 {
 private:

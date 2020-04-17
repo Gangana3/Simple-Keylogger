@@ -30,6 +30,9 @@
     <ClCompile Include="FileLogger.cpp">
       <Filter>Source Files\Loggers</Filter>
     </ClCompile>
+    <ClCompile Include="SocketLogger.cpp">
+      <Filter>Source Files\Loggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeyLogger.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files\Loggers</Filter>
     </ClInclude>
     <ClInclude Include="FileLogger.h">
+      <Filter>Header Files\Loggers</Filter>
+    </ClInclude>
+    <ClInclude Include="SocketLogger.h">
       <Filter>Header Files\Loggers</Filter>
     </ClInclude>
   </ItemGroup>
