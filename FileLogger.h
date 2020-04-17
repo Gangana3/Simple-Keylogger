@@ -15,13 +15,13 @@ using namespace std;
 class FileLogger : public Logger
 {
 private:
-	ofstream logFile;
+	wofstream logFile;
 
 public:
-	FileLogger(string filepath);
+	FileLogger(wstring filepath);
 	~FileLogger();
 
-	virtual void Write(string output);
-	virtual void Write(char output);
+	virtual void Write(wstring output);
+	virtual void Write(WCHAR output);
 };
 

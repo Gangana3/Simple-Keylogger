@@ -1,5 +1,7 @@
 #pragma once
+#define WIN32_LEAN_AND_MEAN
 #include <string>
+#include <Windows.h>
 
 using namespace std;
 
@@ -9,6 +11,6 @@ FileLogger, EmailLogger, etc...
 */
 class Logger {
 public:
-	virtual void Write(string output) = 0;
-	virtual void Write(char output) = 0;
+	virtual void Write(wstring output) = 0;
+	virtual void Write(WCHAR output) = 0;
 };

@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Logger.h"
 #include <string>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
 #pragma comment(lib,"Ws2_32.lib")
+#include "Logger.h"
+
 
 /*
 	Logs the given output to a socket
@@ -22,7 +23,7 @@ public:
 	SocketLogger(string ipv4, int port);
 	~SocketLogger();
 
-	virtual void Write(string output);
-	virtual void Write(char output);
+	virtual void Write(wstring output);
+	virtual void Write(WCHAR output);
 };
 
