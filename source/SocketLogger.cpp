@@ -34,18 +34,8 @@ SocketLogger::~SocketLogger() {
 }
 
 void SocketLogger::Write(wstring output) {
-	const int bufferSize = 1024;
-
-	wchar_t* wcharBuffer = (wchar_t*)output.c_str();
-	char buffer[bufferSize];
-
-	do {
-		wcstombs_s(NULL, buffer, sizeof(buffer), wcharBuffer, sizeof(buffer) / 2);
-		send(this->connSock, buffer, sizeof(buffer), NULL);
-
-		wcharBuffer += bufferSize / 2;
-
-	} while (strlen(buffer) < sizeof(buffer));
+	char* buffer = (char*)output.c_str();
+	send(this->connSock, buffer, output.length() * 2 + 2, NULL);
 }
 
 void SocketLogger::Write(WCHAR output) {
